@@ -11,15 +11,12 @@
 | first_name_kanji   | string     | null: false                    |
 | family_name_kana   | string     | null: false                    |
 | first_name_kana    | string     | null: false                    |
-| birth_year         | integer    | null: false                    |
-| birth_month        | integer    | null: false                    |
-| birth_day          | integer    | null: false                    |
+| birthday           | date       | null: false                    |
 
 ### Association
 
 - has_many :items
 - has_many :comments
-- has_many :shippingaddresses
 - has_many :purchaserecords
 
 ## items テーブル
@@ -34,7 +31,7 @@
 | prefecture_id      | integer    | null: false                    |
 | shipping_date_id   | integer    | null: false                    |
 | price              | integer    | null: false                    |
-| user_id            | references | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -46,8 +43,8 @@
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
 | content      | text       | null: false                    |
-| item_id      | references | null: false, foreign_key: true |
-| user_id      | references | null: false, foreign_key: true |
+| item         | references | null: false, foreign_key: true |
+| user         | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -62,9 +59,9 @@
 | prefecture_id      | integer    | null: false                    |
 | municipalities     | string     | null: false                    |
 | address            | string     | null: false                    |
-| building_name      | string     | null: true                     |
+| building_name      | string     |                                |
 | telephone_number   | string     | null: false                    |
-| purchaserecord_id  | references | null: false, foreign_key: true |
+| purchaserecord     | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -74,8 +71,8 @@
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| user_id            | references | null: false, foreign_key: true |
-| item_id            | references | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
+| item               | references | null: false, foreign_key: true |
 
 ## Association
 - belongs_to :user
