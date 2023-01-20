@@ -17,7 +17,7 @@
 
 - has_many :items
 - has_many :comments
-- has_many :purchaserecords
+- has_many :purchase_records
 
 ## items テーブル
 
@@ -37,7 +37,7 @@
 
 - belongs_to :user
 - has_many :comments
-- has_one :purchaserecord
+- has_one :purchase_record
 
 ## comments テーブル
 | Column       | Type       | Options                        |
@@ -51,7 +51,7 @@
 - belongs_to :user
 - belongs_to :item
 
-## shippingaddresses
+## shipping_addresses
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
@@ -61,13 +61,13 @@
 | address            | string     | null: false                    |
 | building_name      | string     |                                |
 | telephone_number   | string     | null: false                    |
-| purchaserecord     | references | null: false, foreign_key: true |
+| purchase_record    | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :purchaserecord
+- belongs_to :purchase_record
 
-## purchaserecords
+## purchase_records
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
@@ -77,4 +77,4 @@
 ## Association
 - belongs_to :user
 - belongs_to :item
-- has_one :shippingaddress
+- has_one :shipping_address
