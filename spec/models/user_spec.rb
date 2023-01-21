@@ -4,7 +4,6 @@ RSpec.describe User, type: :model do
   before do
     @user = FactoryBot.build(:user)
   end
-  
   describe '新規登録/ユーザー情報' do
     it 'ニックネームが必須であること' do
       @user.nickname = ''
@@ -69,7 +68,6 @@ RSpec.describe User, type: :model do
       @user.first_name_kana = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Family name kana can't be blank", "First name kana can't be blank")
-
     end
     it 'お名前カナ（全角）は、全角（カタカナ）での入力が必須であること' do
       @user.family_name_kana =  "ｱｲｳｴｵ"
