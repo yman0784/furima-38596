@@ -16,14 +16,14 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include "Email can't be blank"
     end
-    # it 'メールアドレスが一意性であること' do
-    #   @user.save
-    #   another_user = FactoryBot.build(:user)
-    #   another_user.email = @user.email
-    #   another_user.valid?
-    #   binding.pry
-    #   expect(another_user.errors.full_messages).to include "Email has already been taken"
-    # end
+    it 'メールアドレスが一意性であること' do
+      @user.save
+      another_user = FactoryBot.build(:user)
+      another_user.email = @user.email
+      another_user.valid?
+      binding.pry
+      expect(another_user.errors.full_messages).to include "Email has already been taken"
+    end
     it 'メールアドレスは、＠を含む必要があること' do
       @user.email = 'testtest.com'
       @user.valid?
