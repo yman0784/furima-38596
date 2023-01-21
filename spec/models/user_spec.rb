@@ -26,7 +26,7 @@ RSpec.describe User, type: :model do
     it 'メールアドレスは、＠を含む必要があること' do
       @user.email = 'testtest.com'
       @user.valid?
-      expect(@user.errors.full_messages).to include ("Email is invalid")
+      expect(@user.errors.full_messages).to include "Email is invalid"
     end
     it 'パスワードが必須であること' do
       @user.password = ''
@@ -81,21 +81,6 @@ RSpec.describe User, type: :model do
       @user.birthday = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Birthday can't be blank")
-    end
-  end
-
-  describe 'トップページ' do
-    it 'ログアウト状態の場合には、トップページ（商品一覧ページ）のヘッダーに、「新規登録」「ログイン」ボタンが表示されること' do
-      
-    end
-    it 'ログイン状態の場合には、トップページ（商品一覧ページ）のヘッダーに、「ユーザーのニックネーム」と「ログアウト」ボタンが表示されること' do
-      
-    end
-    it 'トップページ（商品一覧ページ）ヘッダーの、「新規登録」「ログイン」ボタンをクリックすると、各ページに遷移できること。' do
-      
-    end
-    it 'トップページ（商品一覧ページ）ヘッダーの、「ログアウト」ボタンをクリックすると、ログアウトができること' do
-      
     end
   end
 end
