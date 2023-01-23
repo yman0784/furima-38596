@@ -9,7 +9,7 @@ class User < ApplicationRecord
             presence: true
 
   validates :family_name_kanji, :first_name_kanji, 
-            format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'Input full-width characters' }
+            format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: 'Input full-width characters' }
 
   validates :family_name_kana, :first_name_kana, 
             format: { with: /\A[ァ-ヶー－]+\z/, message: 'Input full-width katakana characters' }
