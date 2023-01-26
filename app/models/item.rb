@@ -1,8 +1,25 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category, :condition, :shipping_cost, :prefecture, :shipping_date 
+  belongs_to :category
+  belongs_to :condition
+  belongs_to :shipping_cost
+  belongs_to :prefecture
+  belongs_to :shipping_date 
 
-  validates :name, :info, presence: true
+  has_one_attached :image
+
+  with_options presence: true do
+    validates :name
+    validates :info
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is out of setting range' }, format: { with: /\A[0-9]+\z/, message: 'is invalid. Input half-width characters'}
+    validates :image
+  end
+
+  # validates :name, :info, :image, :price, presence: true
+
+  # validates :price, numericality: { with: /\A[0-9]+\z/, message: 'Price is invalid. Input half-width characters'}
+  # validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'Price is out of setting range' }
 
   validates :category_id, :condition_id, :shipping_cost_id, :prefecture_id, :shipping_date_id, numericality: { other_than: 1 , message: "can't be blank"}
+
 end
