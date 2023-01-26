@@ -14,7 +14,6 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      # binding.pry
       render :new
     end
   end
