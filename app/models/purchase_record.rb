@@ -1,4 +1,4 @@
-class Order < ApplicationRecord
+class PurchaseRecords < ApplicationRecord
 
   belongs_to :user
   belongs_to :item
