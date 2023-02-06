@@ -33,8 +33,7 @@
 
     <%= form_with(model: @purchase_address, url: item_purchase_records_path, local: true, class: 'transaction-form-wrap') do |f| %>
     <%= render partial: 'shared/error_messages', locals: { model: @purchase_address } %>
-    <%
-=begin%>
+
  <%# カード情報の入力 %>
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>
@@ -74,8 +73,6 @@
       </div>
     </div>
     <%# /カード情報の入力 %> 
-<%
-=end%>
     
     <%# 配送先の入力 %>
     <div class='shipping-address-form'>
