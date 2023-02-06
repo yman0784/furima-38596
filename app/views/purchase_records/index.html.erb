@@ -31,8 +31,11 @@
     </div>
     <%# /支払額の表示 %>
 
-    <%= form_with(model: @shipping_address, local: true, class: 'transaction-form-wrap') do |f| %>
-    <%# カード情報の入力 %>
+    <%= form_with(model: @purchase_address, url: item_purchase_records_path, local: true, class: 'transaction-form-wrap') do |f| %>
+
+    <%
+=begin%>
+ <%# カード情報の入力 %>
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>
         クレジットカード情報入力
@@ -70,7 +73,9 @@
         <%= f.text_field :hoge, class:"input-default", id:"card-cvc", placeholder:"カード背面4桁もしくは3桁の番号", maxlength:"4" %>
       </div>
     </div>
-    <%# /カード情報の入力 %>
+    <%# /カード情報の入力 %> 
+<%
+=end%>
     
     <%# 配送先の入力 %>
     <div class='shipping-address-form'>

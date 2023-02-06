@@ -1,6 +1,6 @@
-class CreateOrders < ActiveRecord::Migration[6.0]
+class CreatePurchaseRecords < ActiveRecord::Migration[6.0]
   def change
-    create_table :orders do |t|
+    create_table :purchase_records do |t|
       t.references :user,             null: false, foreign_key: true
       t.references :item,             null: false, foreign_key: true
       t.timestamps
