@@ -24,18 +24,19 @@
         <%= @item.shipping_cost.name %>
       </span>
     </div>
-
-    <% if user_signed_in? && current_user.id == @item.user_id %>
-      <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
-      <p class="or-text">or</p>
-      <%= link_to "削除", item_path, method: :delete, class:"item-destroy" %>
+    <% if @item.purchase_record.present?%>
+    <% else %>
+      <% if user_signed_in? && current_user.id == @item.user_id %>
+        <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
+        <p class="or-text">or</p>
+        <%= link_to "削除", item_path, method: :delete, class:"item-destroy" %>
+      <% end %>
+      <%# 商品が売れていない場合はこちらを表示しましょう %>
+      <% if user_signed_in? && current_user.id != @item.user_id %>
+        <%= link_to "購入画面に進む", item_purchase_records_path(@item.id) ,class:"item-red-btn"%>
+      <% end %>
+      <%# //商品が売れていない場合はこちらを表示しましょう %>
     <% end %>
-    <%# 商品が売れていない場合はこちらを表示しましょう %>
-    <% if user_signed_in? && current_user.id != @item.user_id %>
-      <%= link_to "購入画面に進む", item_purchase_records_path(@item.id) ,class:"item-red-btn"%>
-    <% end %>
-    <%# //商品が売れていない場合はこちらを表示しましょう %>
-
     <div class="item-explain-box">
       <span><%= @item.info %></span>
     </div>
