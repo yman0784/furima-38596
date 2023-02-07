@@ -52,7 +52,7 @@ class ItemsController < ApplicationController
   end
 
   def prevent_url
-    if current_user != @item.user 
+    if (current_user != @item.user) || (@item.purchase_record != nil)
       redirect_to action: :index
     end
   end

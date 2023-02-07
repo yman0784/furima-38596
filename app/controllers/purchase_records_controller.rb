@@ -27,7 +27,7 @@ class PurchaseRecordsController < ApplicationController
   end
 
   def prevent_url_sold_out
-    if  @item.purchase_record != nil
+    if  (current_user == @item.user ) || (@item.purchase_record != nil)
       redirect_to root_path
     end
   end
