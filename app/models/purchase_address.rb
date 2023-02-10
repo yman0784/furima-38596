@@ -1,10 +1,11 @@
 class PurchaseAddress 
   include ActiveModel::Model
-  attr_accessor :postal_code, :prefecture_id, :municipalities, :address, :building_name, :telephone_number, :user_id, :item_id
+  attr_accessor :token, :postal_code, :prefecture_id, :municipalities, :address, :building_name, :telephone_number, :user_id, :item_id
 
   with_options presence: true do
     validates :user_id
     validates :item_id
+    validates :token
     validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Enter it as follows (e.g. 123-4567)"}
   end
 
