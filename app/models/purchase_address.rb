@@ -17,6 +17,7 @@ class PurchaseAddress
   
   validates :telephone_number, numericality: {only_integer: true, message: "is invalid. Input only number"}
   validates :telephone_number, length: { minimum: 10, message: "is too short" }
+  validates :telephone_number, length: { maximum: 11, message: "is too long" }
 
   def save
     purchase_record = PurchaseRecord.create(user_id: user_id, item_id: item_id)

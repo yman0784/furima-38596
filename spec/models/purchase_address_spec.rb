@@ -19,6 +19,16 @@ RSpec.describe PurchaseAddress, type: :model do
   end
 
   context '内容に問題がある場合' do
+    it 'userが紐付いていないとと購入できないこと' do
+      @purchase_address.user_id = ''
+      @purchase_address.valid?
+      expect(@purchase_address.errors.full_messages).to include("User can't be blank")
+    end
+    it 'itemが紐付いていないとと購入できないこと' do
+      @purchase_address.item_id = ''
+      @purchase_address.valid?
+      expect(@purchase_address.errors.full_messages).to include("Item can't be blank")
+    end
     it 'tokenが空だと購入できないこと' do
       @purchase_address.token = ''
       @purchase_address.valid?
@@ -63,6 +73,11 @@ RSpec.describe PurchaseAddress, type: :model do
       @purchase_address.telephone_number = '123456789'
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Telephone number is too short")
+    end
+    it 'telephone_numberが12桁以上だと購入できないこと' do
+      @purchase_address.telephone_number = '090123412341'
+      @purchase_address.valid?
+      expect(@purchase_address.errors.full_messages).to include("Telephone number is too long")
     end
   end
 
