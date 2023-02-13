@@ -20,17 +20,17 @@ RSpec.describe PurchaseAddress, type: :model do
 
   context '内容に問題がある場合' do
     it 'userが紐付いていないとと購入できないこと' do
-      @purchase_address.user_id = ''
+      @purchase_address.user_id = nil
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("User can't be blank")
     end
     it 'itemが紐付いていないとと購入できないこと' do
-      @purchase_address.item_id = ''
+      @purchase_address.item_id = nil
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Item can't be blank")
     end
     it 'tokenが空だと購入できないこと' do
-      @purchase_address.token = ''
+      @purchase_address.token = nil
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
     end
