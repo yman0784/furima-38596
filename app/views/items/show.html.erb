@@ -22,14 +22,12 @@
         <%= @item.shipping_cost.name %>
       </span>
     </div>
-    <% if @item.purchase_record.present?%>
-    <% else %>
-      <% if user_signed_in? && current_user.id == @item.user_id %>
+    <% if user_signed_in? && @item.purchase_record.blank?%>
+      <% if current_user.id == @item.user_id %>
         <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
         <p class="or-text">or</p>
         <%= link_to "削除", item_path, method: :delete, class:"item-destroy" %>
-      <% end %>
-      <% if user_signed_in? && current_user.id != @item.user_id %>
+      <% else %>
         <%= link_to "購入画面に進む", item_purchase_records_path(@item.id) ,class:"item-red-btn"%>
       <% end %>
     <% end %>
