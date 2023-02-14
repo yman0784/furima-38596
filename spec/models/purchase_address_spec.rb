@@ -65,7 +65,7 @@ RSpec.describe PurchaseAddress, type: :model do
       expect(@purchase_address.errors.full_messages).to include("Telephone number can't be blank")
     end
     it 'telephone_numberに半角数字以外があると購入できないこと' do
-      @purchase_address.telephone_number = '０９０-1234-1234'
+      @purchase_address.telephone_number = 'aaaaaaaaaaa'
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Telephone number is invalid. Input only number")
     end
