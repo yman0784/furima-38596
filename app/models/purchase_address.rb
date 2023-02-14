@@ -15,7 +15,7 @@ class PurchaseAddress
   validates :address, presence: { message: "can't be blank" }
   validates :telephone_number, presence: { message: "can't be blank" }
   
-  validates :telephone_number, numericality: {only_integer: true, message: "is invalid. Input only number"}
+  validates :telephone_number, format: {with: /\d/, message: "is invalid. Input only number"}
   validates :telephone_number, length: { minimum: 10, message: "is too short" }
   validates :telephone_number, length: { maximum: 11, message: "is too long" }
 
