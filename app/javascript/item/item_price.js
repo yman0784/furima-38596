@@ -12,6 +12,6 @@ priceInput.addEventListener("input", () => {
     addTaxDom.innerHTML = Math.floor(inputValue * commission);
 
   const profit = document.getElementById("profit");
-    profit.innerHTML = Math.floor(inputValue - (inputValue * commission));
+    profit.innerHTML = inputValue - Math.floor(inputValue * commission);
 })});
 
